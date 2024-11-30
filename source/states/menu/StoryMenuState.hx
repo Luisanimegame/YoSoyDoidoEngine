@@ -113,6 +113,10 @@ class StoryMenuState extends MusicBeatState
 		}
 		
 		changeWeek();
+		
+		#if mobile
+        addVirtualPad(LEFT_FULL, A_B);
+        #end
 	}
 		
 	var canSelect:Bool = true;

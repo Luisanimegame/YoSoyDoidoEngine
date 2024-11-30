@@ -129,6 +129,10 @@ class FreeplayState extends MusicBeatState
 		add(resetTxt);
 
 		changeSelection();
+		
+		#if mobile
+        addVirtualPad(LEFT_FULL, A_B);
+        #end
 	}
 
 	override function update(elapsed:Float)

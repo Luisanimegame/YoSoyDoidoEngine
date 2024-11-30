@@ -120,6 +120,10 @@ class MainMenuState extends MusicBeatState
 
 		changeSelection();
 		bg.y = bgPosY;
+		
+		#if mobile
+        addVirtualPad(UP_DOWN, A_B);
+        #end
 	}
 	
 	//var itemSin:Float = 0;
