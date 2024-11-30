@@ -23,7 +23,7 @@ class WarningState extends MusicBeatState
 	{
 		super.update(elapsed);
 		
-		if(Controls.justPressed(ACCEPT))
+		if(Controls.justPressed(ACCEPT #if android || FlxG.android.justReleased.BACK #end))
 		{
             Main.switchState(new states.TitleState());
 

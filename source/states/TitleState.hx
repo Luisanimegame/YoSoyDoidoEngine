@@ -97,8 +97,16 @@ class TitleState extends MusicBeatState
 		if(FlxG.sound.music != null)
 			if(FlxG.sound.music.playing)
 				Conductor.songPos = FlxG.sound.music.time;
+				
+		#if mobile
+        var jusTouched:Bool = false;
+
+        for (touch in FlxG.touches.list)
+          if (touch.justPressed)
+            jusTouched = true;
+        #end
 		
-		if(Controls.justPressed(ACCEPT))
+		if(Controls.justPressed(ACCEPT #if mobile || jusTouched #end))
 		{
 			if(introEnded)
 			{

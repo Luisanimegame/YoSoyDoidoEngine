@@ -515,11 +515,19 @@ class PlayState extends MusicBeatState
 			startCountdown();
 
 		callScript("createPost");
+		
+		#if mobile
+		addMobileControls();
+		#end
 	}
 
 	public function startCountdown()
 	{
 		var daCount:Int = 0;
+		
+		#if mobile
+		mobileControls.visible = true;
+		#end
 		
 		var countTimer = new FlxTimer().start(Conductor.crochet / 1000, function(tmr:FlxTimer)
 		{
@@ -1017,7 +1025,7 @@ class PlayState extends MusicBeatState
 		
 		CoolUtil.camPosLerp(camGame, camFollow, followLerp);
 		
-		if(Controls.justPressed(PAUSE))
+		if(Controls.justPressed(PAUSE #if android || FlxG.android.justReleased.BACK #end))
 			pauseSong();
 
 		if(Controls.justPressed(RESET))
