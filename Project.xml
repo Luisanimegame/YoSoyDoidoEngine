@@ -67,7 +67,7 @@
 	<haxelib name="flixel-addons" />
 	<haxelib name="flixel-ui" />
 	<haxelib name="hscript" if="debug" /> <!--Used only for flixel's debugger!-->
-	<haxelib name="hscript-iris" />
+	<haxelib name="hscript-iris" if="desktop"/>
 	<haxedef name="hscriptPos" />
 	<haxelib name="hxdiscord_rpc" if="DISCORD_RPC" />
 	<haxelib name="hxvlc" if="VIDEOS_ALLOWED" />
@@ -91,7 +91,7 @@
 	<!--<haxedef name="FLX_NO_NATIVE_CURSOR" />-->
 
 	<!--Optimise inputs, be careful you will get null errors if you don't use conditionals in your game-->
-	<haxedef name="FLX_NO_MOUSE" if="mobile" />
+	<haxedef name="FLX_NO_MOUSE" flixel.sound.FlxSound />
 	<haxedef name="FLX_NO_KEYBOARD" if="mobile" />
 	<haxedef name="FLX_NO_TOUCH" if="desktop" />
 	<!--<haxedef name="FLX_NO_GAMEPAD" />-->
