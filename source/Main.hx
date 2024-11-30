@@ -39,7 +39,7 @@ class Main extends Sprite
 
 		addChild(new FlxGame(0, 0, Init, 120, 120, true));
 
-		#if desktop
+		#if !desktop
 		addChild(fpsCounter = new FPSCounter(5, 3));
 		#end
 
