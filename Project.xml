@@ -24,7 +24,7 @@
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" />
 
 	<!--Mobile-specific-->
-	<window if="mobile" orientation="landscape" fullscreen="true" resizable="false" />
+	<window if="mobile" orientation="landscape" fullscreen="true" width="1280" height="720" resizable="false"/>
 
 	<!-- _____________________________ Custom Defines ___________________________ -->
 
@@ -46,6 +46,7 @@
 	<source path="source" />
 	<assets path="assets" if="VIDEOS_ALLOWED" />
 	<assets path="assets" exclude="videos" unless="VIDEOS_ALLOWED" />
+	<assets path="mobile" rename="assets/mobile" if="mobile" /> <!-- to not have the mobile assets in another builds -saw -->
 
 	<!-- RENAME UNDERSCORE FOLDERS -->
 	<section if="RENAME_UNDERSCORE">
@@ -115,6 +116,22 @@
 	<haxedef name="HXCPP_STACK_LINE" 	if="release" />
 
 	<!-- _________________________________ Custom _______________________________ -->
+		
+	<!--Always enable Null Object Reference check-->
+	<haxedef name="HXCPP_CHECK_POINTER" />
+	<haxedef name="HXCPP_STACK_LINE" />
+	<haxedef name="HXCPP_STACK_TRACE" />
+
+	<section if="android">
+		<!--Target SDK-->
+		<config:android target-sdk-version="29" if="${lime <= 8.0.0}" />
+	</section>
+
+	<section if="ios">
+		<!--Dependency--> 
+		<dependency name="Metal.framework" />
+		<dependency name="WebKit.framework" />
+	</section>
 
 	<section if="ROUND_ICON">
 		<icon path="art/icon/macOS/icon16.png" 	size='16'  />
