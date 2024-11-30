@@ -64,10 +64,18 @@ class GameOverSubState extends MusicBeatSubState
 		super.update(elapsed);
 		if(bfFollow != null)
 			CoolUtil.camPosLerp(FlxG.camera, bfFollow, elapsed * 2);
+			
+		#if mobile
+        var jusTouched:Bool = false;
+
+        for (touch in FlxG.touches.list)
+          if (touch.justPressed)
+            jusTouched = true;
+        #end
 
 		if(!ended)
 		{
-			if(Controls.justPressed(BACK))
+			if(Controls.justPressed(BACK #if android || FlxG.android.justReleased.BACK #end))
 			{
 				FlxG.camera.fade(FlxColor.BLACK, 0.2, false, function()
 				{
@@ -75,7 +83,7 @@ class GameOverSubState extends MusicBeatSubState
 				}, true);
 			}
 
-			if(Controls.justPressed(ACCEPT))
+			if(Controls.justPressed(ACCEPT #if mobile || jusTouched #end))
 				endBullshit();
 		}
 	}

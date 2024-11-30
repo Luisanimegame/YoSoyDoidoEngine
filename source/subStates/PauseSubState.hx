@@ -111,6 +111,10 @@ class PauseSubState extends MusicBeatSubState
 		FlxG.sound.list.add(pauseSong);
 
 		changeSelection();
+		
+		#if mobile
+        addVirtualPad(UP_DOWN, A_B);
+        #end
 	}
 
 	function closePause()
